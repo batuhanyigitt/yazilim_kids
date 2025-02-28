@@ -1,9 +1,6 @@
 
 
 
-
-
-
 import re
 
 def remove_punctuation(text, preserve_emoticons=True, preserve_contractions=True):
@@ -32,19 +29,28 @@ print(text_without_punctuation)
 
 
 
+
+
+
+
+
+
+
+
 import re
 
 def remove_punctuation(text):
-    # Define regex pattern to match punctuation
+
     punctuation_pattern = re.compile(r'[^\w\s]')
 
-    # Replace punctuation with an empty string
+
     text_without_punctuation = re.sub(punctuation_pattern, '', text)
 
     return text_without_punctuation
 
-# Example usage
+
 input_text = "Hello! How are you doing? I'm doing fine, thank you!"
 text_without_punctuation = remove_punctuation(input_text)
 print("Text without punctuation:")
 print(text_without_punctuation)
+

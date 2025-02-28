@@ -12,17 +12,36 @@ class Tetris(QMainWindow):
 
     def initUI(self):
         self.tboard = Board(self)
-        self.setCentralWidget(self.tboard)
+        
+        # Create layout for score, level, and game board
+        vbox = QVBoxLayout()
+        hbox = QHBoxLayout()
 
+        # Status bar
         self.statusbar = self.statusBar()
         self.tboard.msg2Statusbar[str].connect(self.statusbar.showMessage)
 
+        # Score and level labels
+        self.score_label = QLabel("Score: 0")
+        self.level_label = QLabel("Level: 1")
+        vbox.addWidget(self.score_label)
+        vbox.addWidget(self.level_label)
+        
+        # Add widgets to layout
+        hbox.addLayout(vbox)
+        hbox.addWidget(self.tboard)
+
+        central_widget = QFrame()
+        central_widget.setLayout(hbox)
+        self.setCentralWidget(central_widget)
+
         self.tboard.start()
 
-        self.resize(180, 380)
+        self.resize(300, 600)  # Larger window size for modern displays
         self.center()
         self.setWindowTitle('Tetris')
         self.show()
+
 
     def center(self):
         qr = self.frameGeometry()
